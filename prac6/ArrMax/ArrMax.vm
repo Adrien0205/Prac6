@@ -11,7 +11,7 @@ pop pointer 1     // set the pointer to the array
 push argument 1   // push n (number of elements in the array)
 pop local 0       // store n in local variable 0
 
-push constant 3267 // set max_value to the maximum possible value (32767)
+push constant 32767 // set max_value to the maximum possible value (32767)
 not                // negate the value to get -32768
 pop local 1        // store max_value in local variable 1
 
