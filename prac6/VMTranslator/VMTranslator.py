@@ -47,19 +47,20 @@ class VMTranslator:
             # Pop value from the stack and store it in the that segment
             return f"@THAT\nD=M\n@{offset}\nD=D+A\n@R13\nM=D\n@SP\nAM=M-1\nD=M\n@R13\nA=M\nM=D\n"
 
-
-
+    @staticmethod
     def vm_add():
         '''Generate Hack Assembly code for a VM add operation'''
-        return ""
+        return "@SP\nAM=M-1\nD=M\nA=A-1\nM=D+M\n"
 
+    @staticmethod
     def vm_sub():
         '''Generate Hack Assembly code for a VM sub operation'''
-        return ""
+        return "@SP\nAM=M-1\nD=M\nA=A-1\nM=M-D\n"
 
+    @staticmethod
     def vm_neg():
         '''Generate Hack Assembly code for a VM neg operation'''
-        return ""
+        return "@SP\nA=M-1\nM=-M\n"
 
     def vm_eq():
         '''Generate Hack Assembly code for a VM eq operation'''
