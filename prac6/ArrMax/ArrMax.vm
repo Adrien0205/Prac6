@@ -1,0 +1,52 @@
+// Contains a function ArrMax.arrMax that finds and returns the largest element in the array a of length b.
+// a & b are both supplied as arguments
+
+// Put your code here.
+// ArrMax.vm
+
+function ArrMax.arrMax 3
+push argument 0   // push m (pointer to the array)
+pop pointer 1     // set the pointer to the array
+
+push argument 1   // push n (number of elements in the array)
+pop local 0       // store n in local variable 0
+
+push constant 3267 // set max_value to the maximum possible value (32767)
+not                // negate the value to get -32768
+pop local 1        // store max_value in local variable 1
+
+push constant 0   // initialize i to 0
+pop local 2       // store i in local variable 2
+
+label LOOP        // start of the loop
+push local 2      // push i
+push local 0      // push n
+lt                // compare i < n
+not               // negate the result to get i >= n
+if-goto ENDLOOP   // jump to ENDLOOP if i >= n
+
+push pointer 1    // push the base address of the array
+push constant 1      // push i
+add               // calculate the address of the current element
+pop pointer 1    // set pointer 0 to point to the current element
+
+push that 0       // push the value of the current element
+push local 1      // push max_value
+lt                // compare current element < max_value
+if-goto SKIP      // jump to SKIP if current element < max_value
+
+push that 0       // push the value of the current element
+pop local 1       // update max_value with the current element
+
+label SKIP        // start of SKIP
+
+label INCREMENT   // start of INCREMENT
+push local 2      // push i
+push constant 1   // push 1
+add               // increment i by 1
+pop local 2       // store the updated value of i in local variable 2
+goto LOOP         // jump back to LOOP
+
+label ENDLOOP     // end of the loop
+push local 1      // push max_value
+return            // return max_value

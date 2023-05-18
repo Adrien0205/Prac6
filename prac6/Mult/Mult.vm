@@ -1,0 +1,40 @@
+// Calculates a = x*y
+// a is a local variable
+// x & y are static variables
+
+// Put your code here.
+
+// Calculates a = x*y
+// a is a local variable
+// x & y are static variables
+
+// Put your code here.
+
+push constant 0
+pop local 0
+push constant 0
+pop temp 3
+label WLOOP
+push temp 3
+push static 1
+lt
+not
+if-goto WLOOP_END
+push local 0
+push static 0
+add
+pop local 0
+push temp 3
+push constant 1
+add
+pop temp 3
+goto WLOOP
+label WLOOP_END
+
+
+label END
+goto END
+
+
+label END
+goto END
