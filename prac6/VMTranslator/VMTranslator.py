@@ -62,13 +62,16 @@ class VMTranslator:
         '''Generate Hack Assembly code for a VM neg operation'''
         return "@SP\nA=M-1\nM=-M\n"
 
+    @staticmethod
     def vm_eq():
         '''Generate Hack Assembly code for a VM eq operation'''
-        return ""
+        return "@SP\nAM=M-1\nD=M\nA=A-1\nD=M-D\n@TRUE_EQ{0}\nD;JEQ\n@SP\nA=M-1\nM=0\n@END_EQ{0}\n0;JMP\n(TRUE_EQ{0})\n@SP\nA=M-1\nM=-1\n(END_EQ{0})\n"
 
+    @staticmethod
     def vm_gt():
         '''Generate Hack Assembly code for a VM gt operation'''
-        return ""
+        return "@SP\nAM=M-1\nD=M\nA=A-1\nD=M-D\n@TRUE_GT{0}\nD;JGT\n@SP\nA=M-1\nM=0\n@END_GT{0}\n0;JMP\n(TRUE_GT{0})\n@SP\nA=M-1\nM=-1\n(END_GT{0})\n"
+
 
     def vm_lt():
         '''Generate Hack Assembly code for a VM lt operation'''
